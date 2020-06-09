@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Changes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Event</th>
+      <th>Changed By</th>
+      <th>ChangeSet</th>
+      <th>Created At</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @versions.each do |version| %>
+      <tr>
+        <td><%= version.item_type%></td>
+        <td><%= version.event %></td>
+        <td><%= version.user.email if version.user.present?%></td>
+        <td>
+        <% data = version.changeset %>
+        <span><%= display_changeset(data)%></span>
+        </td>
+        <td><%= version.created_at.strftime("%F") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

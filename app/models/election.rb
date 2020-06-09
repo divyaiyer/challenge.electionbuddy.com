@@ -1,4 +1,5 @@
 class Election < ApplicationRecord
+  has_paper_trail
   has_many :questions
   belongs_to :user
 
